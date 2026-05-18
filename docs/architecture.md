@@ -52,6 +52,14 @@ TXT and DOCX are supported in the browser path. PDF needs a dedicated extractor
 because reliable PDF text recovery often requires worker isolation, server-side
 processing, or native desktop capabilities.
 
+## AI adaptation direction
+
+The AI package exposes a provider-neutral adaptation boundary. The current MVP
+implementation is deterministic and safe: it adapts summaries, prioritizes
+confirmed skills, and polishes achievement wording without changing factual
+fields such as names, contacts, companies, positions, and dates. A real cloud or
+local LLM provider can replace this implementation behind the same contract.
+
 ## Offline desktop direction
 
 The desktop application should reuse the web UI and add local capabilities:

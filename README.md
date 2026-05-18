@@ -10,6 +10,8 @@ DOCX/PDF documents from configurable templates.
 This repository now starts as a TypeScript monorepo with:
 
 - shared resume domain types and template configuration primitives;
+- a safe AI-adaptation package that rewrites presentation text without changing
+  factual resume fields;
 - an hh.ru resume mapper that converts API-like payloads into the canonical
   model;
 - a browser file importer with TXT and DOCX text extraction;
@@ -42,6 +44,7 @@ apps/
   web/        Minimal React/Vite web surface for the first flow
   desktop/    Desktop requirements and offline shell notes
 packages/
+  ai/         Safe corporate/vacancy adaptation primitives
   core/       Canonical resume and template domain model
   hh/         hh.ru payload mapping
   import/     Browser file import and text extraction
