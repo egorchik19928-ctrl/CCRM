@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.ccrm.resume-simple",
+  "asar": true,
+  "directories": { "output": "release/${version}" },
+  "files": ["dist-electron", "dist"],
+  "win": {
+    "target": [{ "target": "portable", "arch": ["x64"] }],
+    "artifactName": "ResumeSimple-${version}-Portable.${ext}",
+    "executableName": "ResumeSimple",
+    "signAndEditExecutable": false
+  }
+}
