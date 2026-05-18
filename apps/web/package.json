@@ -9,6 +9,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@ccrm/ai": "0.1.0",
     "@ccrm/core": "0.1.0",
     "@ccrm/export": "0.1.0",
     "@ccrm/hh": "0.1.0",

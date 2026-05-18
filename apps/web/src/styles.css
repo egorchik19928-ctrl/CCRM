@@ -80,7 +80,8 @@ dt {
   max-width: 1120px;
 }
 
-.import-panel {
+.import-panel,
+.hh-panel {
   background: #eff6ff;
   border: 1px solid #bfdbfe;
   border-radius: 24px;
@@ -92,11 +93,18 @@ dt {
   padding: 24px;
 }
 
-.import-panel h2 {
+.hh-panel {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.import-panel h2,
+.hh-panel h2 {
   margin-top: 0;
 }
 
-.import-panel p {
+.import-panel p,
+.hh-panel p {
   color: #475569;
   line-height: 1.6;
 }
@@ -134,6 +142,27 @@ textarea {
   width: 1px;
 }
 
+.primary-button,
+.secondary-button {
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  margin: 8px 8px 0 0;
+  padding: 10px 16px;
+}
+
+.primary-button {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.secondary-button {
+  background: #e0e7ff;
+  color: #1e3a8a;
+}
+
 .warnings,
 .success,
 .error {
@@ -157,6 +186,14 @@ textarea {
   margin: 12px 0 0;
 }
 
+.controls-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto 24px;
+  max-width: 1120px;
+}
+
 .panel {
   align-self: start;
   padding: 24px;
@@ -174,6 +211,55 @@ dl {
 
 dd {
   margin: 0 0 16px;
+}
+
+.field {
+  color: #334155;
+  display: grid;
+  font-size: 0.9rem;
+  font-weight: 700;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+input,
+select {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  color: #0f172a;
+  font: inherit;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.field textarea {
+  min-height: 96px;
+}
+
+.section-toggles {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.section-toggles label {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.section-toggles input {
+  width: auto;
+}
+
+.export-actions {
+  margin-top: 20px;
+}
+
+.success-list {
+  color: #047857;
+  margin: 16px 0 0;
+  padding-left: 20px;
 }
 
 .document-preview {
@@ -218,6 +304,8 @@ dd {
 
   .hero,
   .import-panel,
+  .hh-panel,
+  .controls-grid,
   .workspace {
     grid-template-columns: 1fr;
   }
