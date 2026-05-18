@@ -24,8 +24,9 @@ This repository now starts as a TypeScript monorepo with:
 
 - **Web app:** shared team workspace for importing, editing, adapting, and
   exporting resumes.
-- **Desktop app:** offline-first client that reuses the web UI, stores drafts
-  locally, and synchronizes with the backend when online.
+- **Desktop app:** Electron shell that reuses the web UI, stores MVP drafts
+  locally through the browser storage layer, and can load the built web bundle
+  offline.
 
 ## Commands
 
@@ -42,7 +43,7 @@ npm run dev:web
 ```text
 apps/
   web/        Minimal React/Vite web surface for the first flow
-  desktop/    Desktop requirements and offline shell notes
+  desktop/    Electron desktop shell for offline MVP usage
 packages/
   ai/         Safe corporate/vacancy adaptation primitives
   core/       Canonical resume and template domain model

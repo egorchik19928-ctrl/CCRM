@@ -3,7 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "main": "src/main.cjs",
   "scripts": {
+    "build": "echo \"Run npm run build -w @ccrm/web before packaging the desktop shell\"",
+    "dev": "ELECTRON_WEB_URL=http://localhost:5173 electron src/main.cjs",
+    "start": "electron src/main.cjs",
     "typecheck": "echo \"Desktop shell scaffold has no TypeScript sources yet\""
+  },
+  "devDependencies": {
+    "electron": "^42.1.0"
   }
 }

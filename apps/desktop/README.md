@@ -1,8 +1,22 @@
 # Desktop app
 
-The desktop application is planned as a Tauri shell around the shared web UI.
-This folder starts with offline requirements so the web and domain packages are
-designed with desktop reuse in mind from the beginning.
+The desktop MVP is an Electron shell around the shared web UI. It can run
+against the Vite dev server during development or load the built web bundle from
+`apps/web/dist` for offline use.
+
+## Commands
+
+```bash
+npm run dev:web
+npm run dev -w @ccrm/desktop
+```
+
+For offline desktop startup:
+
+```bash
+npm run build -w @ccrm/web
+npm run start -w @ccrm/desktop
+```
 
 ## Offline responsibilities
 
@@ -16,7 +30,8 @@ designed with desktop reuse in mind from the beginning.
 
 ## First implementation tasks
 
-1. Add a Tauri 2 shell that loads `apps/web`.
-2. Add local persistence through SQLite or a file-backed adapter.
+1. Replace browser localStorage with an explicit desktop storage adapter when
+   multiple local profiles are needed.
+2. Add native file system save dialogs for generated DOCX/PDF files.
 3. Implement a sync queue with explicit pending/failed/synced states.
-4. Reuse `@ccrm/core`, `@ccrm/hh`, and `@ccrm/export` in the desktop UI.
+4. Add packaging scripts for target operating systems.
