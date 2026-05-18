@@ -1,0 +1,83 @@
+{
+  "id": "candidate-001",
+  "url": "https://hh.ru/resume/candidate-001",
+  "first_name": "Ivan",
+  "last_name": "Petrov",
+  "middle_name": "Sergeevich",
+  "title": "Frontend Developer",
+  "area": {
+    "id": "1",
+    "name": "Moscow"
+  },
+  "contact": [
+    {
+      "type": {
+        "id": "email",
+        "name": "Email"
+      },
+      "value": {
+        "email": "ivan.petrov@example.com"
+      }
+    },
+    {
+      "type": {
+        "id": "cell",
+        "name": "Phone"
+      },
+      "value": {
+        "formatted": "+7 999 000-00-00"
+      }
+    }
+  ],
+  "skills": "Frontend developer with enterprise UI experience.",
+  "skill_set": [
+    "React",
+    "TypeScript",
+    "Redux",
+    "React"
+  ],
+  "experience": [
+    {
+      "company": "Example LLC",
+      "position": "Frontend Developer",
+      "start": "2021-02-01",
+      "end": null,
+      "description": "Built a customer portal. Introduced a shared component library. Improved onboarding for new developers."
+    }
+  ],
+  "education": {
+    "primary": [
+      {
+        "name": "Moscow Technical University",
+        "organization": "Computer Science",
+        "result": "Bachelor",
+        "year": 2020
+      }
+    ]
+  },
+  "language": [
+    {
+      "id": "rus",
+      "name": "Russian",
+      "level": {
+        "id": "l1",
+        "name": "Native"
+      }
+    },
+    {
+      "id": "eng",
+      "name": "English",
+      "level": {
+        "id": "b2",
+        "name": "B2"
+      }
+    }
+  ],
+  "certificate": [
+    {
+      "title": "Professional Scrum Master",
+      "owner": "Scrum.org",
+      "achieved_at": "2022-06-01"
+    }
+  ]
+}
