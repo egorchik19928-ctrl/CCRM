@@ -12,6 +12,7 @@
     "@ccrm/core": "0.1.0",
     "@ccrm/export": "0.1.0",
     "@ccrm/hh": "0.1.0",
+    "@ccrm/parser": "0.1.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

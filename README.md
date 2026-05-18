@@ -12,6 +12,7 @@ This repository now starts as a TypeScript monorepo with:
 - shared resume domain types and template configuration primitives;
 - an hh.ru resume mapper that converts API-like payloads into the canonical
   model;
+- a text resume parser for manual uploads and future DOCX/PDF text extraction;
 - an export package that builds a corporate document view model ready for DOCX
   and PDF renderers;
 - a minimal web app demonstrating the first resume-to-template flow.
@@ -42,6 +43,7 @@ apps/
 packages/
   core/       Canonical resume and template domain model
   hh/         hh.ru payload mapping
+  parser/     Text resume parsing for manual/upload flows
   export/     Corporate document view-model generation
 docs/
   architecture.md

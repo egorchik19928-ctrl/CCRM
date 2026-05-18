@@ -80,6 +80,54 @@ dt {
   max-width: 1120px;
 }
 
+.import-panel {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 24px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 280px 1fr;
+  margin: 0 auto 24px;
+  max-width: 1120px;
+  padding: 24px;
+}
+
+.import-panel h2 {
+  margin-top: 0;
+}
+
+.import-panel p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+textarea {
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  color: #0f172a;
+  font: inherit;
+  min-height: 260px;
+  padding: 16px;
+  resize: vertical;
+  width: 100%;
+}
+
+.warnings,
+.success {
+  grid-column: 2;
+}
+
+.warnings {
+  color: #b45309;
+  margin: 0;
+}
+
+.success {
+  color: #047857;
+  font-weight: 700;
+  margin: 0;
+}
+
 .panel {
   align-self: start;
   padding: 24px;
@@ -140,7 +188,13 @@ dd {
   }
 
   .hero,
+  .import-panel,
   .workspace {
     grid-template-columns: 1fr;
+  }
+
+  .warnings,
+  .success {
+    grid-column: 1;
   }
 }

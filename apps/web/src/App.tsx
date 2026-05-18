@@ -1,14 +1,31 @@
+import { useMemo, useState } from "react";
 import { buildCorporateResumeDocument } from "@ccrm/export";
-import { demoResume, demoTemplate, demoVacancy } from "./demoData";
+import { parseTextResume } from "@ccrm/parser";
+import { demoPlainTextResume, demoResume, demoTemplate, demoVacancy } from "./demoData";
 import "./styles.css";
 
-const document = buildCorporateResumeDocument({
-  resume: demoResume,
-  template: demoTemplate,
-  vacancy: demoVacancy
-});
-
 export function App() {
+  const [resumeText, setResumeText] = useState(demoPlainTextResume);
+  const parsedUpload = useMemo(
+    () =>
+      parseTextResume({
+        text: resumeText,
+        fileName: "manual-import.txt",
+        importedAt: new Date("2026-05-18T00:00:00.000Z")
+      }),
+    [resumeText]
+  );
+  const activeResume = resumeText.trim() ? parsedUpload.resume : demoResume;
+  const document = useMemo(
+    () =>
+      buildCorporateResumeDocument({
+        resume: activeResume,
+        template: demoTemplate,
+        vacancy: demoVacancy
+      }),
+    [activeResume]
+  );
+
   return (
     <main className="app-shell">
       <section className="hero">
@@ -23,10 +40,34 @@ export function App() {
         </div>
         <div className="status-card">
           <span>Source</span>
-          <strong>{demoResume.source.kind}</strong>
+          <strong>{activeResume.source.kind}</strong>
           <span>Imported</span>
-          <strong>{new Date(demoResume.source.importedAt).toLocaleDateString()}</strong>
+          <strong>{new Date(activeResume.source.importedAt).toLocaleDateString()}</strong>
         </div>
+      </section>
+
+      <section className="import-panel">
+        <div>
+          <h2>Manual import</h2>
+          <p>
+            Paste text extracted from DOCX/PDF or copied from a resume. The
+            parser converts it into the same canonical model as hh.ru imports.
+          </p>
+        </div>
+        <textarea
+          aria-label="Resume text"
+          value={resumeText}
+          onChange={(event) => setResumeText(event.target.value)}
+        />
+        {parsedUpload.warnings.length > 0 ? (
+          <ul className="warnings">
+            {parsedUpload.warnings.map((warning) => (
+              <li key={warning}>{warning}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="success">Parsed without warnings.</p>
+        )}
       </section>
 
       <section className="workspace">
@@ -34,13 +75,15 @@ export function App() {
           <h2>Candidate facts</h2>
           <dl>
             <dt>Name</dt>
-            <dd>{demoResume.candidate.fullName}</dd>
+            <dd>{activeResume.candidate.fullName}</dd>
             <dt>Role</dt>
-            <dd>{demoResume.candidate.title}</dd>
+            <dd>{activeResume.candidate.title}</dd>
             <dt>Contacts</dt>
-            <dd>{demoResume.candidate.contacts.visibility}</dd>
+            <dd>{activeResume.candidate.contacts.visibility}</dd>
+            <dt>Detected sections</dt>
+            <dd>{parsedUpload.detectedSections.join(", ") || "none"}</dd>
             <dt>Confirmed skills</dt>
-            <dd>{demoResume.skills.map((skill) => skill.name).join(", ")}</dd>
+            <dd>{activeResume.skills.map((skill) => skill.name).join(", ") || "none"}</dd>
           </dl>
         </aside>
 
@@ -54,8 +97,8 @@ export function App() {
             <section key={section.key} className="document-section">
               <h3>{section.title}</h3>
               <ul>
-                {section.lines.map((line) => (
-                  <li key={line}>{line}</li>
+                {section.lines.map((line, index) => (
+                  <li key={`${section.key}-${index}`}>{line}</li>
                 ))}
               </ul>
             </section>

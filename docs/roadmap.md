@@ -10,6 +10,7 @@
 
 ## Slice 2: upload and parsing
 
+- Add a reusable parser package for text extracted from uploads.
 - Add DOCX/PDF upload.
 - Extract text and metadata.
 - Normalize parsed content into the canonical model.

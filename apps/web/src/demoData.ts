@@ -1,6 +1,28 @@
 import { createCompanyTemplate, type CompanyTemplate } from "@ccrm/core";
 import { mapHhResumeToResume, type HhResumePayload } from "@ccrm/hh";
 
+export const demoPlainTextResume = `Ivan Petrov
+Frontend Developer
+ivan.petrov@example.com
++7 999 000-00-00
+
+Summary
+Frontend developer with enterprise UI experience.
+
+Skills
+React, TypeScript, Redux
+
+Experience
+Example LLC - Frontend Developer
+- Built a customer portal
+- Introduced a shared component library
+
+Education
+Moscow Technical University, 2020
+
+Languages
+English - B2, Russian - Native`;
+
 export const demoTemplate: CompanyTemplate = createCompanyTemplate({
   id: "primary",
   name: "Primary corporate resume",
