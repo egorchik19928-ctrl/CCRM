@@ -1,4 +1,3 @@
-import * as mammoth from "mammoth";
 import { parseTextResume, type ParsedTextResume } from "@ccrm/parser";
 
 export type ResumeImportFileKind = "plain-text" | "docx" | "pdf" | "unsupported";
@@ -66,6 +65,7 @@ export async function extractTextFromBrowserFile(
   }
 
   if (kind === "docx") {
+    const mammoth = await import("mammoth");
     const result = await mammoth.extractRawText({
       arrayBuffer: await file.arrayBuffer()
     });
