@@ -65,7 +65,7 @@ describe("text resume parser", () => {
 
   it("returns warnings when important sections are missing", () => {
     const parsed = parseTextResume({
-      text: "Untitled resume",
+      text: "Untitled",
       importedAt: new Date("2026-05-18T00:00:00.000Z")
     });
 
