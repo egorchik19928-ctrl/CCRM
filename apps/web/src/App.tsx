@@ -1,19 +1,24 @@
-import { useMemo, useState } from "react";
+import { type ChangeEvent, useMemo, useState } from "react";
 import { buildCorporateResumeDocument } from "@ccrm/export";
+import { UnsupportedResumeFileError, importResumeFromBrowserFile } from "@ccrm/import";
 import { parseTextResume } from "@ccrm/parser";
 import { demoPlainTextResume, demoResume, demoTemplate, demoVacancy } from "./demoData";
 import "./styles.css";
 
 export function App() {
   const [resumeText, setResumeText] = useState(demoPlainTextResume);
+  const [sourceFileName, setSourceFileName] = useState("manual-import.txt");
+  const [fileImportMessage, setFileImportMessage] = useState<string>();
+  const [fileImportError, setFileImportError] = useState<string>();
+  const [isImportingFile, setIsImportingFile] = useState(false);
   const parsedUpload = useMemo(
     () =>
       parseTextResume({
         text: resumeText,
-        fileName: "manual-import.txt",
+        fileName: sourceFileName,
         importedAt: new Date("2026-05-18T00:00:00.000Z")
       }),
-    [resumeText]
+    [resumeText, sourceFileName]
   );
   const activeResume = resumeText.trim() ? parsedUpload.resume : demoResume;
   const document = useMemo(
@@ -25,6 +30,42 @@ export function App() {
       }),
     [activeResume]
   );
+
+  async function handleFileImport(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.currentTarget.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    setIsImportingFile(true);
+    setFileImportMessage(undefined);
+    setFileImportError(undefined);
+
+    try {
+      const result = await importResumeFromBrowserFile(
+        file,
+        new Date("2026-05-18T00:00:00.000Z")
+      );
+
+      setResumeText(result.extraction.text);
+      setSourceFileName(result.extraction.fileName);
+      setFileImportMessage(
+        `${result.extraction.fileName} imported as ${result.extraction.kind}.`
+      );
+    } catch (error) {
+      const message =
+        error instanceof UnsupportedResumeFileError && error.kind === "pdf"
+          ? "PDF import needs the dedicated extraction worker planned for the next slice."
+          : error instanceof Error
+            ? error.message
+            : "Resume file import failed.";
+      setFileImportError(message);
+    } finally {
+      setIsImportingFile(false);
+      event.currentTarget.value = "";
+    }
+  }
 
   return (
     <main className="app-shell">
@@ -50,9 +91,21 @@ export function App() {
         <div>
           <h2>Manual import</h2>
           <p>
-            Paste text extracted from DOCX/PDF or copied from a resume. The
-            parser converts it into the same canonical model as hh.ru imports.
+            Upload TXT/DOCX or paste text copied from a resume. The importer
+            extracts text and the parser converts it into the same canonical
+            model as hh.ru imports.
           </p>
+          <label className="file-picker">
+            <span>{isImportingFile ? "Importing..." : "Import resume file"}</span>
+            <input
+              type="file"
+              accept=".txt,.md,.docx,.pdf,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf"
+              disabled={isImportingFile}
+              onChange={handleFileImport}
+            />
+          </label>
+          {fileImportMessage ? <p className="success">{fileImportMessage}</p> : null}
+          {fileImportError ? <p className="error">{fileImportError}</p> : null}
         </div>
         <textarea
           aria-label="Resume text"

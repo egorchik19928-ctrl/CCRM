@@ -112,8 +112,31 @@ textarea {
   width: 100%;
 }
 
+.file-picker {
+  cursor: pointer;
+  display: inline-flex;
+  margin-top: 12px;
+}
+
+.file-picker span {
+  background: #2563eb;
+  border-radius: 999px;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.file-picker input {
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
 .warnings,
-.success {
+.success,
+.error {
   grid-column: 2;
 }
 
@@ -126,6 +149,12 @@ textarea {
   color: #047857;
   font-weight: 700;
   margin: 0;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: 700;
+  margin: 12px 0 0;
 }
 
 .panel {
@@ -194,7 +223,8 @@ dd {
   }
 
   .warnings,
-  .success {
+  .success,
+  .error {
     grid-column: 1;
   }
 }

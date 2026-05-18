@@ -11,8 +11,9 @@
 ## Slice 2: upload and parsing
 
 - Add a reusable parser package for text extracted from uploads.
-- Add DOCX/PDF upload.
-- Extract text and metadata.
+- Add TXT and DOCX browser upload.
+- Extract text and metadata from supported files.
+- Add PDF extraction through a dedicated worker/server/native desktop path.
 - Normalize parsed content into the canonical model.
 - Preserve the original file and extracted facts separately.
 

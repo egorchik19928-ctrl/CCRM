@@ -45,6 +45,13 @@ This separation is intentional: factual fields can be protected from AI
 rewrites, while presentation text can still be adapted to a corporate style or
 vacancy.
 
+## Upload import direction
+
+The import package extracts text from browser files and hands it to the parser.
+TXT and DOCX are supported in the browser path. PDF needs a dedicated extractor
+because reliable PDF text recovery often requires worker isolation, server-side
+processing, or native desktop capabilities.
+
 ## Offline desktop direction
 
 The desktop application should reuse the web UI and add local capabilities:
