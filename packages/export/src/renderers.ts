@@ -1,11 +1,3 @@
-import {
-  Document,
-  HeadingLevel,
-  Packer,
-  Paragraph,
-  TextRun
-} from "docx";
-import { jsPDF } from "jspdf";
 import type { CorporateResumeDocument } from "./corporateDocument";
 
 export type ResumeExportFormat = "txt" | "docx" | "pdf";
@@ -29,6 +21,7 @@ export function renderCorporateResumeText(document: CorporateResumeDocument): st
 export async function renderCorporateResumeDocx(
   document: CorporateResumeDocument
 ): Promise<Blob> {
+  const { Document, HeadingLevel, Packer, Paragraph, TextRun } = await import("docx");
   const docxDocument = new Document({
     creator: "CCRM",
     title: document.title,
@@ -86,7 +79,8 @@ export async function renderCorporateResumeDocx(
   return Packer.toBlob(docxDocument);
 }
 
-export function renderCorporateResumePdf(document: CorporateResumeDocument): Blob {
+export async function renderCorporateResumePdf(document: CorporateResumeDocument): Promise<Blob> {
+  const { jsPDF } = await import("jspdf");
   const pdf = new jsPDF();
   const margin = 18;
   const pageHeight = pdf.internal.pageSize.getHeight();
