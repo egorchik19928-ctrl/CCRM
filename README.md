@@ -17,7 +17,7 @@ This repository now starts as a TypeScript monorepo with:
 - a browser file importer with TXT and DOCX text extraction;
 - a text resume parser for manual uploads and future DOCX/PDF text extraction;
 - an export package that builds a corporate document view model ready for DOCX
-  and PDF renderers;
+  and PDF renderers, plus MVP browser DOCX/PDF generation;
 - a minimal web app demonstrating the first resume-to-template flow.
 
 ## Target applications

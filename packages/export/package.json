@@ -11,6 +11,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@ccrm/core": "0.1.0"
+    "@ccrm/core": "0.1.0",
+    "docx": "^9.6.1",
+    "jspdf": "^4.2.1"
   }
 }
