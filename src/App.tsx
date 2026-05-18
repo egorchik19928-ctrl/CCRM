@@ -173,7 +173,7 @@ export function App() {
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">
-              Desktop · v0.5
+              Desktop · v0.6
             </div>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Резюме (просто)</h1>
             <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300">

@@ -1,4 +1,4 @@
-# CCRM — «Резюме (просто)» v0.5
+# CCRM — «Резюме (просто)» v0.6
 
 Упрощённое десктоп-приложение (Electron):
 
@@ -15,7 +15,7 @@ npm install
 npm run build:win   # portable .exe под Windows
 ```
 
-Артефакт для скачивания: `artifacts/ResumeSimple-v0.5-Windows-x64.zip` (после сборки).
+Артефакт для скачивания: `artifacts/ResumeSimple-v0.6-Windows-x64.zip` (после сборки).
 
 ## Разработка
 
